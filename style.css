@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none; /* Previene selección de texto en Safari móvil */
+    touch-action: manipulation; /* Elimina el retraso del doble tap en móviles */
+}
+
+body {
+    background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+    color: #f8fafc;
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    color: #00ffcc;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* --- CONTENEDOR FLEXIBLE --- */
+.game-container {
+    position: relative;
+    padding: 6px;
+    background: #070d19;
+    border: 2px solid #1e293b;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 85, 255, 0.15);
+    width: 100%;
+    max-width: 800px; /* Tamaño máximo en PC */
+}
+
+/* --- CANVAS TOTALMENTE RESPONSIVO --- */
+canvas {
+    background-color: #050914;
+    display: block;
+    width: 100%;       /* Ocupa el 100% del contenedor en pantallas pequeñas */
+    height: auto;      /* Escala la altura proporcionalmente para no deformar */
+    border: 2px solid #0055ff;
+    border-radius: 4px;
+}
+
+/* Capa retro CRT */
+.game-container::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 6px; left: 6px; bottom: 6px; right: 6px;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.7;
+}
+
+/* --- BOTONES VIRTUALES TÁCTILES --- */
+.btn-touch {
+    display: none; /* Ocultos por defecto en computadoras de escritorio */
+    position: fixed;
+    bottom: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    z-index: 100;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón Izquierdo (Jugador 1 - Cian) */
+.p1-btn {
+    left: 20px;
+    background: #00221a;
+    color: #00ffcc;
+    border: 3px solid #00ffcc;
+    text-shadow: 0 0 5px #00ffcc;
+}
+.p1-btn:active {
+    background: #00ffcc;
+    color: #00221a;
+    box-shadow: 0 0 25px #00ffcc;
+}
+
+/* Botón Derecho (Jugador 2 - Magenta) */
+.p2-btn {
+    right: 20px;
+    background: #220022;
+    color: #ff00ff;
+    border: 3px solid #ff00ff;
+    text-shadow: 0 0 5px #ff00ff;
+}
+.p2-btn:active {
+    background: #ff00ff;
+    color: #220022;
+    box-shadow: 0 0 25px #ff00ff;
+}
+
+/* --- INTERFAZ DE INSTRUCCIONES --- */
+.instrucciones {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #64748b;
+    text-align: center;
+}
+
+.mobile-text { display: none; } /* Oculto en PC */
+
+/* --- ADAPTACIÓN EXCLUSIVA PARA MÓVILES (MEDIA QUERY) --- */
+@media (max-width: 768px) {
+    h1 { font-size: 1.4rem; }
+    
+    /* Mostrar los botones táctiles en pantallas pequeñas */
+    .btn-touch { display: block; }
+    
+    /* Alternar textos informativos */
+    .pc-text { display: none; }
+    .mobile-text { display: inline; color: #ff0055; }
+    
+    /* Ajuste de margen inferior para que los botones de abajo no tapen el juego */
+    body {
+        justify-content: flex-start;
+        padding-top: 20px;
+    }
+    .game-container {
+        margin-bottom: 120px; 
+    }
+}

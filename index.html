@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-select=none">
+    <title>Cyber Tank 1vs1 // Online Mobile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>CYBER TANK // PROTOTYPE</h1>
+
+    <button id="btnTouchP1" class="btn-touch p1-btn">J1 TAP</button>
+
+    <div class="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+
+    <button id="btnTouchP2" class="btn-touch p2-btn">J2 TAP</button>
+
+    <div class="instrucciones">
+        <span class="pc-text">PC -> J1: [ESPACIO] | J2: [ENTER]</span>
+        <span class="mobile-text">MÓVIL -> MANTÉN EL BOTÓN DE TU COLOR</span>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database-compat.js"></script>
+
+<script src="game.js"></script>
+</body>
+</html>
